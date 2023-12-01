@@ -1,12 +1,12 @@
 // import { fetchMovieByName } from 'components/axiosMovies';
-import { fetchMovieByName } from 'components/axiosMovies';
-import { useState } from 'react';
+// import { fetchMovieByName } from 'components/axiosMovies';
+// import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 const MoviesPage = () => {
-  const [movie, setMovie] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(false);
+  // const [movie, setMovie] = useState({});
+  // const [isLoading, setIsLoading] = useState(false);
+  // const [error, setError] = useState(false);
   // =======================
   const [params, setParams] = useSearchParams();
   const query = params.get('query') ?? '';
@@ -16,20 +16,20 @@ const MoviesPage = () => {
     setParams(params);
   };
 
-  const getMovieByQuery = async query => {
-    try {
-      setIsLoading(true);
-      setError(false);
-      const resp = await fetchMovieByName(query);
-      console.log(`resp`, resp);
-      setMovie({ ...resp });
-    } catch (error) {
-      console.log(`Catch error message`, error.message);
-      setError(true);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  // const getMovieByQuery = async query => {
+  //   try {
+  //     setIsLoading(true);
+  //     setError(false);
+  //     const resp = await fetchMovieByName(query);
+  //     console.log(`resp`, resp);
+  //     setMovie({ ...resp });
+  //   } catch (error) {
+  //     console.log(`Catch error message`, error.message);
+  //     setError(true);
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // };
 
   // const resetQueryParam = () => {
   //   setParams({ query: '' });
@@ -52,8 +52,8 @@ const MoviesPage = () => {
       >
         Search
       </button>
-      {isLoading && <h2>LOADING......</h2>}
-      {error && <h2>ERROR ...</h2>}
+      {/* {isLoading && <h2>LOADING......</h2>} */}
+      {/* {error && <h2>ERROR ...</h2>} */}
     </div>
   );
 };
