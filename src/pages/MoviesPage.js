@@ -56,7 +56,7 @@ const MoviesPage = () => {
         Search
       </button>
       <ul>
-        {movie &&
+        {movie.length > 0 &&
           movie.map(
             ({
               id,
