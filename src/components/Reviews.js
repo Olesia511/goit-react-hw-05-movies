@@ -35,7 +35,7 @@ export const Reviews = () => {
   return (
     <ul>
       {isLoading && <h2>LOADING......</h2>}
-      {error && <h2>Sorry. {error.message}.</h2>}
+      {error && <h2>Sorry. Not found. {error.message}</h2>}
       {reviews.length > 0 ? (
         reviews.map(
           ({

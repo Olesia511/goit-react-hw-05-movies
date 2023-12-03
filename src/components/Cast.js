@@ -30,7 +30,7 @@ export const Cast = () => {
   return (
     <ul>
       {isLoading && <h2>LOADING......</h2>}
-      {error && <h2>Sorry. {error.message}.</h2>}
+      {error && <h2>Sorry. Not found. {error.message}</h2>}
       {cast.map(({ character, id, name, profile_path }) => {
         return (
           <li key={id}>

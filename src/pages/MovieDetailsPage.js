@@ -1,9 +1,10 @@
 import { fetchMovieDetails } from 'components/axiosMovies';
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
+import { AiOutlineArrowLeft } from 'react-icons/ai';
 
 const MovieDetailsPage = () => {
-  const [movie, setMovie] = useState({});
+  const [movie, setMovie] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
 
@@ -25,7 +26,7 @@ const MovieDetailsPage = () => {
         setError(false);
 
         const resp = await fetchMovieDetails(id);
-        setMovie({ ...resp });
+        setMovie(resp);
       } catch (error) {
         console.log(`Catch error message`, error.message);
         setError(true);
@@ -41,7 +42,9 @@ const MovieDetailsPage = () => {
     const { genres } = movie;
 
     if (genres.length > 0) {
-      return genres.map(({ id, name }) => <span key={id}> {name} </span>);
+      return genres.map(({ id, name }) => (
+        <span key={id}> {name.toLowerCase()} </span>
+      ));
     }
   };
 
@@ -49,10 +52,11 @@ const MovieDetailsPage = () => {
 
   return (
     <div>
-      <h1>MovieDetails </h1>
-      <Link to={backLink.current.state?.from ?? '/'}>Back to Home </Link>
+      <Link to={backLink.current.state?.from ?? '/'}>
+        <AiOutlineArrowLeft /> GO BACK
+      </Link>
       {isLoading && <h2>LOADING......</h2>}
-      {error && <h2>Sorry. {error.message}.</h2>}
+      {error && <h2>Sorry. Not found. {error.message}</h2>}
       <div>
         {title && (
           <h2>

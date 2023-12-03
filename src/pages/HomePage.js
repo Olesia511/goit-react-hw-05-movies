@@ -29,11 +29,16 @@ const HomePage = () => {
   };
 
   const ArrMoviesTrend = () =>
-    moviesTrend.map(({ title, name, id }) => (
+    moviesTrend.map(({ title, name, id, poster_path }) => (
       <li key={id}>
         <Link to={`/movies/${id}`} state={{ from: location }}>
-          {' '}
-          {title ?? name}{' '}
+          {title ?? name}
+          {poster_path && (
+            <img
+              src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+              alt={title}
+            />
+          )}
         </Link>
       </li>
     ));
@@ -42,22 +47,10 @@ const HomePage = () => {
     <>
       <h1> Trending today</h1>
       {isLoading && <h2>LOADING......</h2>}
-      {error && <h2>ERROR ...</h2>}
+      {error && <h2>Sorry. Not found. {error.message}</h2>}
       {moviesTrend.length > 0 && <ul> {<ArrMoviesTrend />}</ul>}
     </>
   );
 };
 
 export default HomePage;
-
-// ===============      список найпопулярніших фільмів на сьогодні
-// const id = '';
-// const param = `/trending/day`;
-
-// import { useParams } from 'react-router-dom';
-
-// const ProductDetails = () => {
-//   const { productId } = useParams();
-//   // return <div>Now showing product with id - {productId}</div>;
-//   return console.log(`productId`, productId);
-// };
