@@ -24,20 +24,21 @@ export const fetchMovieDetails = async id => {
   return resp.data;
 };
 
-// ============== запит інформації про акторський склад фільму
+// ===========    запит інформації про акторський склад фільму
 
-// /movies/get-movie-credits запит інформації про акторський склад для сторінки кінофільму.
-// 'https://api.themoviedb.org/3/ movie/268/credits ?language=en-US'
-// const query = `/movie/ 268/ credits`  ;
+export const fetchMovieCast = async id => {
+  const resp = await axios.get(`/movie/${id}/credits`, options);
+  return resp.data;
+};
 
-// ======================        запит оглядів фільму
-// /movies/get-movie-reviews запит оглядів для сторінки кінофільму.
-// 'https://api.themoviedb.org/3  /movie/268/reviews ?language=en-US  &page=1'
-// const query = `/movie/ 268 / reviews     ?page=1`;
+// ===========    запит оглядів фільму
 
-//  ===============    пошук фільму за ключовим словом
+export const fetchMovieReviews = async id => {
+  const resp = await axios.get(`/movie/${id}/reviews`, options);
+  return resp.data;
+};
 
-// https://api.themoviedb.org/3/search/movie?api_key=5c576db4835f48d474cbbe1b679cc91b&query=batman
+// ===========    пошук фільму за ключовим словом
 
 export const fetchMovieByName = async value => {
   const resp = await axios.get(`/search/movie?query=${value} `, options);

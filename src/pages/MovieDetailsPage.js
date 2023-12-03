@@ -10,30 +10,32 @@ const MovieDetailsPage = () => {
   const location = useLocation();
   const backLink = useRef(location);
 
-  const idMovie = useParams();
+  const id = useParams();
 
   useEffect(() => {
-    if (!idMovie.movieId) {
+    const { movieId } = id;
+
+    if (!movieId) {
       return;
     }
 
-    getMovie(idMovie.movieId);
-  }, [idMovie.movieId]);
+    const getMovie = async id => {
+      try {
+        setIsLoading(true);
+        setError(false);
 
-  const getMovie = async id => {
-    try {
-      setIsLoading(true);
-      setError(false);
+        const resp = await fetchMovieDetails(id);
+        setMovie({ ...resp });
+      } catch (error) {
+        console.log(`Catch error message`, error.message);
+        setError(true);
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-      const resp = await fetchMovieDetails(id);
-      setMovie({ ...resp });
-    } catch (error) {
-      console.log(`Catch error message`, error.message);
-      setError(true);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+    getMovie(movieId);
+  }, [id]);
 
   const Genres = () => {
     const { genres } = movie;
@@ -50,7 +52,7 @@ const MovieDetailsPage = () => {
       <h1>MovieDetails </h1>
       <Link to={backLink.current.state?.from ?? '/'}>Back to Home </Link>
       {isLoading && <h2>LOADING......</h2>}
-      {error && <h2>ERROR ...</h2>}
+      {error && <h2>Sorry. {error.message}.</h2>}
       <div>
         {title && (
           <h2>
@@ -58,7 +60,7 @@ const MovieDetailsPage = () => {
           </h2>
         )}
 
-        {vote_average > 0 && <p> Vote average {vote_average.toFixed()}⭐</p>}
+        {vote_average > 0 && <p> Vote average: {vote_average.toFixed(2)}</p>}
         {poster_path && (
           <img
             src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
