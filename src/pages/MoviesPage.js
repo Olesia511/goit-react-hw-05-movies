@@ -1,5 +1,5 @@
 import { fetchMovieByName } from 'components/axiosMovies';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import noPhoto from '../images/no-photo-min.png';
 import { format, parseISO } from 'date-fns';
