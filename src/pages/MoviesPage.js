@@ -1,5 +1,5 @@
 import { fetchMovieByName } from 'components/axiosMovies';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import noPhoto from '../images/no-photo-min.png';
 import { format, parseISO } from 'date-fns';
@@ -14,17 +14,16 @@ const MoviesPage = () => {
 
   const location = useLocation();
 
-  // useEffect(() => {
-  //   if (query === '') {
-  //     return;
-  //   }
-  //   queryMovie();
-  // }, []);
-
   const handleChangeQueryParam = newQuery => {
     params.set('query', newQuery);
     setParams(params);
   };
+  useEffect(() => {
+    // if (query === '') {
+    //   return;
+    // }
+    queryMovie();
+  }, []);
 
   const queryMovie = async () => {
     setIsLoading(true);
