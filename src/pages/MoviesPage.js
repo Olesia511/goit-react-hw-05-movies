@@ -14,12 +14,12 @@ const MoviesPage = () => {
 
   const location = useLocation();
 
-  useEffect(() => {
-    if (query === '') {
-      return;
-    }
-    queryMovie();
-  }, []);
+  // useEffect(() => {
+  //   if (query === '') {
+  //     return;
+  //   }
+  //   queryMovie();
+  // }, []);
 
   const handleChangeQueryParam = newQuery => {
     params.set('query', newQuery);
