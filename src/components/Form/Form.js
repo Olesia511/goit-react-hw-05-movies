@@ -14,7 +14,7 @@ const formSchema = Yup.object().shape({
   query: Yup.string()
     .min(2, 'Too Short!')
     .max(50, 'Too Long!')
-    .required('Required'),
+    .required('Enter movie name'),
 });
 
 export const FormMovie = ({ submit }) => {
