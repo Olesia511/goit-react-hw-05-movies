@@ -1,6 +1,12 @@
-import { Link } from 'react-router-dom';
 import noPhoto from '../../images/no-photo-min.png';
 import { formatDateFull } from 'components/FormatDate';
+import {
+  AuthorName,
+  Avatar,
+  ContentContainer,
+  ImgContainer,
+  StyledReviewsCard,
+} from './Reviews.styled';
 
 export const ReviewsCard = ({ review }) => {
   const {
@@ -12,23 +18,29 @@ export const ReviewsCard = ({ review }) => {
   } = review;
 
   return (
-    <li>
-      {author && (
-        <h3>
-          Author {author} created {formatDateFull(created_at)}
-        </h3>
-      )}
-      {avatar_path ? (
-        <img
-          src={`https://image.tmdb.org/t/p/w500/${avatar_path}`}
-          alt={author}
-        />
-      ) : (
-        <img src={noPhoto} alt={author} />
-      )}
-      {content && <p>{content}</p>}
-      {rating && <p>Rating: {rating}</p>}
-      {url && <Link>{url}</Link>}
-    </li>
+    <StyledReviewsCard>
+      <ImgContainer>
+        {author && <AuthorName>{author}</AuthorName>}
+        {avatar_path ? (
+          <Avatar
+            src={`https://image.tmdb.org/t/p/w500/${avatar_path}`}
+            alt={author}
+          />
+        ) : (
+          <Avatar src={noPhoto} alt={author} />
+        )}
+      </ImgContainer>
+
+      <ContentContainer>
+        <p>Created {formatDateFull(created_at)}</p>
+        {content && <p>{content}</p>}
+        {rating && <p>Rating: {rating}</p>}
+        {url && (
+          <a href={url} target="_blank" rel="noopener noreferrer">
+            {url}
+          </a>
+        )}
+      </ContentContainer>
+    </StyledReviewsCard>
   );
 };

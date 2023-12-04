@@ -108,10 +108,10 @@ const MovieDetailsPage = () => {
       <MovieCastContainer>
         <CastList>
           <li>
-            <StyledLink to="cast"> Cast </StyledLink>
+            <StyledLink to="cast"> CAST </StyledLink>
           </li>
           <li>
-            <StyledLink to="reviews"> Reviews </StyledLink>
+            <StyledLink to="reviews"> REVIEWS </StyledLink>
           </li>
         </CastList>
         <Outlet />

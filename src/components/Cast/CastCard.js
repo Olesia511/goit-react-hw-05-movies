@@ -1,19 +1,20 @@
 import noPhoto from '../../images/no-photo-min.png';
+import { ActorRole, StyledActorCard, StyledImgActor } from './Cast.styled';
+
 export const ActorCard = ({ actor }) => {
   const { character, name, profile_path } = actor;
   return (
-    <li>
-      {character && <h3>Character: {character}</h3>}
-
+    <StyledActorCard>
       {profile_path ? (
-        <img
+        <StyledImgActor
           src={`https://image.tmdb.org/t/p/w500/${profile_path}`}
           alt={name}
         />
       ) : (
-        <img src={noPhoto} alt={name} />
+        <StyledImgActor src={noPhoto} alt={name} />
       )}
-      {name && <h3>Name: {name} </h3>}
-    </li>
+      {name && <ActorRole>{name} </ActorRole>}
+      {character && <ActorRole>Character: {character}</ActorRole>}
+    </StyledActorCard>
   );
 };

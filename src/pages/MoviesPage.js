@@ -21,6 +21,9 @@ const MoviesPage = () => {
     try {
       setError(false);
       const { results } = await fetchMovieByName(query);
+      if (results.length === 0 && query !== '') {
+        setError('Wrong request. Try again.');
+      }
       setArrMovie(results);
     } catch (error) {
       setError(error.message);

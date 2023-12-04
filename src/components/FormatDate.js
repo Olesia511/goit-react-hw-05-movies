@@ -7,5 +7,5 @@ export const FormatDateYear = date => {
 
 export const formatDateFull = date => {
   const parsedDate = parseISO(date);
-  return format(parsedDate, 'yyyy MMMM  d');
+  return format(parsedDate, 'yyyy d MMMM');
 };

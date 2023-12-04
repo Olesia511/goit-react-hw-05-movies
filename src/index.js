@@ -6,22 +6,17 @@ import { ThemeProvider } from 'styled-components';
 
 export const theme = {
   colors: {
-    orange: '#da6a00',
-    burgundy: '#251c1c',
+    orange: '#EC9704',
+    burgundy: '#15100A',
     brown: '#e1dce0',
     white: '#C7C9C6',
   },
   radii: {
     sm: '4px',
-    md: '12px',
+    md: '8px',
     lg: '16px',
   },
-  fontSize: {
-    fs12: '12px',
-    fs20: '20px',
-    fs24: '24px',
-    fs28: '28px',
-  },
+
   spacing: value => `${value * 4}px`,
 };
 

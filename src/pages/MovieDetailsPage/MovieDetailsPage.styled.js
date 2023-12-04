@@ -49,6 +49,7 @@ export const CastList = styled.ul`
 
 export const StyledLink = styled(NavLink)`
   font-weight: 700;
+  font-size: 18px;
   color: ${p => p.theme.colors.orange};
   padding: 12px 20px;
   height: 60px;

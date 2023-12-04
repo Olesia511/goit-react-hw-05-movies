@@ -28,7 +28,7 @@ export const Reviews = () => {
   }, [id]);
 
   return (
-    <ul>
+    <div>
       {isLoading && <h2>LOADING......</h2>}
       {error && <h2>Sorry. Not found. {error}</h2>}
       {reviews.length > 0 ? (
@@ -36,6 +36,6 @@ export const Reviews = () => {
       ) : (
         <h3>We don't have any reviews for this movie.</h3>
       )}
-    </ul>
+    </div>
   );
 };
