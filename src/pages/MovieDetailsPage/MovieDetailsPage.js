@@ -1,11 +1,10 @@
 import { fetchMovieDetails } from 'components/axiosMovies';
-import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
+import { Outlet, useLocation, useParams } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 import {
   BackLink,
   CastList,
-  ItemLinkCast,
   MovieCastContainer,
   MovieContainer,
   MovieData,
