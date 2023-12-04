@@ -1,5 +1,4 @@
 import { Link, useLocation } from 'react-router-dom';
-import noPhoto from '../../images/no-photo-min.png';
 import { FormatDateYear } from 'components/FormatDate';
 import {
   PosterMovie,
