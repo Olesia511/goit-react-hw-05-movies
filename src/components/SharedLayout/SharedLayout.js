@@ -1,23 +1,23 @@
-import { GlobalStyle } from './GlobalStyle';
-import { NavLink, Outlet } from 'react-router-dom';
-import { Layout } from './Layout';
+import { GlobalStyle } from '../GlobalStyle';
+import { Outlet } from 'react-router-dom';
+import { Header, Layout, NavList, StyledLink } from './SharedLayout.styled';
 import { Suspense } from 'react';
 
 export const SharedLayout = () => {
   return (
     <Layout>
-      <header>
+      <Header>
         <nav>
-          <ul>
+          <NavList>
             <li>
-              <NavLink to="/">HOME link</NavLink>
+              <StyledLink to="/">HOME</StyledLink>
             </li>
             <li>
-              <NavLink to="/movies"> Movies link </NavLink>
+              <StyledLink to="/movies"> MOVIES</StyledLink>
             </li>
-          </ul>
+          </NavList>
         </nav>
-      </header>
+      </Header>
       <main>
         <Suspense fallback={<div>LOADING.......</div>}>
           <Outlet />

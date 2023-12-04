@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
-import { fetchMovieCast } from './axiosMovies';
+import { fetchMovieCast } from '../axiosMovies';
 import { useParams } from 'react-router-dom';
-import noPhoto from '../images/no-photo-min.png';
+
+import { CastList } from './CastList';
 
 export const Cast = () => {
   const [cast, setCast] = useState([]);
@@ -28,26 +29,10 @@ export const Cast = () => {
   }, [id]);
 
   return (
-    <ul>
+    <div>
       {isLoading && <h2>LOADING......</h2>}
-      {error && <h2>Sorry. Not found. {error.message}</h2>}
-      {cast.map(({ character, id, name, profile_path }) => {
-        return (
-          <li key={id}>
-            {character && <h3>Character: {character}</h3>}
-
-            {profile_path ? (
-              <img
-                src={`https://image.tmdb.org/t/p/w500/${profile_path}`}
-                alt={name}
-              />
-            ) : (
-              <img src={noPhoto} alt={name} />
-            )}
-            {name && <h3>Name: {name} </h3>}
-          </li>
-        );
-      })}
-    </ul>
+      {error && <h2>Sorry. Not found. {error}</h2>}
+      {cast.length > 0 && <CastList cast={cast} />}
+    </div>
   );
 };

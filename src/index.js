@@ -6,11 +6,10 @@ import { ThemeProvider } from 'styled-components';
 
 export const theme = {
   colors: {
-    purple: '#554853',
-    beige: '#d6d0d0',
+    orange: '#da6a00',
     burgundy: '#251c1c',
-    gray: '#686461',
     brown: '#e1dce0',
+    white: '#C7C9C6',
   },
   radii: {
     sm: '4px',
